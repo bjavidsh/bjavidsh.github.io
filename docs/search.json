@@ -2,15 +2,36 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Behtash_Javidsharifi",
+    "title": "Behtash Javidsharifi (AKA James Javid)",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "Welcome! My background is in civil engineering. My PhD-level research focused on empirical approaches to earthquake damage correlation. I have developed an interest in data science, and I am working hard to quench it! My interests connect structural engineering, languages, machine learning, and natural language processing. I hope to strengthen my computational skills and apply them to interdisciplinary research and practical problems.\nThis is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site"
+    "text": "My academic background is in civil and earthquake engineering. My doctoral research examines how buildings respond to earthquakes and how analytical predictions relate to damage observed in the field. This work combines structural modelling, numerical simulations, and field measurements, and has strengthened my interest in extracting useful insights from complex data."
+  },
+  {
+    "objectID": "about.html#background",
+    "href": "about.html#background",
+    "title": "About",
+    "section": "",
+    "text": "My academic background is in civil and earthquake engineering. My doctoral research examines how buildings respond to earthquakes and how analytical predictions relate to damage observed in the field. This work combines structural modelling, numerical simulations, and field measurements, and has strengthened my interest in extracting useful insights from complex data."
+  },
+  {
+    "objectID": "about.html#why-data-science",
+    "href": "about.html#why-data-science",
+    "title": "About",
+    "section": "Why data science",
+    "text": "Why data science\nWorking with research data has motivated me to develop more systematic approaches to programming, analysis, and reproducibility. I believe natural language processing brings together my interests in analytical problem-solving and language. I am particularly interested in exploring how machine learning and NLP can support engineering research, including working with information contained in technical documents. I am currently looking to the possibility of applying NLP to probablistic seismic hazard analysis to develop strategies for better understanding and more adequate preparedness toward impending future earthquakes."
+  },
+  {
+    "objectID": "about.html#outside-of-data-science",
+    "href": "about.html#outside-of-data-science",
+    "title": "About",
+    "section": "Outside of data science",
+    "text": "Outside of data science\nOutside my studies, I enjoy working out, martial arts, and exploring languages. Poetry and literature are also important interests of mine. Learning languages gives me another way to engage with different perspectives and balances the technical focus of my research. About this site"
   }
 ]

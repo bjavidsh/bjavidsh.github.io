@@ -2,4 +2,17 @@
 title: "About"
 ---
 
+
+## Background
+
+My academic background is in civil and earthquake engineering. My doctoral research examines how buildings respond to earthquakes and how analytical predictions relate to damage observed in the field. This work combines structural modelling, numerical simulations, and field measurements, and has strengthened my interest in extracting useful insights from complex data.
+
+## Why data science
+
+Working with research data has motivated me to develop more systematic approaches to programming, analysis, and reproducibility. I believe natural language processing brings together my interests in analytical problem-solving and language. I am particularly interested in exploring how machine learning and NLP can support engineering research, including working with information contained in technical documents.
+I am currently looking to the possibility of applying NLP to probablistic seismic hazard analysis to develop strategies for better understanding and more adequate preparedness toward impending future earthquakes.
+
+## Outside of data science
+
+Outside my studies, I enjoy working out, martial arts, and exploring languages. Poetry and literature are also important interests of mine. Learning languages gives me another way to engage with different perspectives and balances the technical focus of my research.
 About this site
