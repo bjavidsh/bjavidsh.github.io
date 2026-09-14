@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Blog – Behtash JavidSharifi</title>
+<title>Projects – Behtash JavidSharifi</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -36,8 +36,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -75,65 +73,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -164,11 +104,11 @@ window.Quarto = {
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./blog.html" aria-current="page"> 
+    <a class="nav-link" href="./blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./projects.html"> 
+    <a class="nav-link active" href="./projects.html" aria-current="page"> 
 <span class="menu-text">Projects</span></a>
   </li>  
 </ul>
@@ -182,15 +122,26 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#recover" id="toc-recover" class="nav-link active" data-scroll-target="#recover">RECoVER</a>
+  <ul class="collapse">
+  <li><a href="#modules-under-development" id="toc-modules-under-development" class="nav-link" data-scroll-target="#modules-under-development">Modules under development</a></li>
+  <li><a href="#pend-period-energy-damping" id="toc-pend-period-energy-damping" class="nav-link" data-scroll-target="#pend-period-energy-damping">PEnD: Period, Energy, Damping</a></li>
+  <li><a href="#connecting-engineering-and-data-science" id="toc-connecting-engineering-and-data-science" class="nav-link" data-scroll-target="#connecting-engineering-and-data-science">Connecting engineering and data science</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Blog</h1>
+<h1 class="title">Projects</h1>
 </div>
 
 
@@ -207,40 +158,70 @@ window.Quarto = {
 </header>
 
 
+<section id="recover" class="level2">
+<h2 class="anchored" data-anchor-id="recover">RECoVER</h2>
+<p><strong>Resilience-oriented Experimental–numerical Correlation Of Vibration, Energy, and Response</strong></p>
+<p>RECoVER is a research framework I am developing as part of my doctoral work in earthquake engineering. It connects field observations, ambient vibration measurements, structural modelling, and earthquake response simulations to investigate relationships between ground motion, structural response, and observed building damage.</p>
+<p>My research focuses on low- to mid-rise reinforced-concrete school buildings, with a case study of the schools affected by the 2023 Türkiye earthquake sequence. Through RECoVER, I aim to bring experimental evidence and numerical analysis into a consistent workflow for studying earthquake damage.</p>
+<section id="modules-under-development" class="level3">
+<h3 class="anchored" data-anchor-id="modules-under-development">Modules under development</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Module</th>
+<th>Full name</th>
+<th>Role in the framework</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>SAVER</strong></td>
+<td>Seismic Ambient Vibration Evaluation for Resilience</td>
+<td>Analyses ambient vibration measurements to identify structural vibration characteristics and provide experimental targets for model assessment.</td>
+</tr>
+<tr class="even">
+<td><strong>DISASTER</strong></td>
+<td>Dynamic Inference and Simulation Analysis for Structural Transformation and Earthquake Response</td>
+<td>Uses MATLAB and OpenSees to simulate structural response to earthquake ground motions and evaluate response demands, energy measures, and damage indices.</td>
+</tr>
+<tr class="odd">
+<td><strong>RESCuE</strong></td>
+<td>Response-backbone Extraction and Simulation Calibration Using ETABS</td>
+<td>Processes ETABS pushover results to derive structural backbones and parameters for simplified nonlinear models.</td>
+</tr>
+<tr class="even">
+<td><strong>SECURE</strong></td>
+<td>Structural Earthquake-sequence Calibration for Undamaged-state Reverse Estimation</td>
+<td>Handshakes ETABS OAPI and MATLAB and also seeks to estimate undamaged structural properties by comparing simulated post-sequence vibration characteristics with field measurements.</td>
+</tr>
+<tr class="odd">
+<td><strong>PREPARE</strong></td>
+<td>Predictive Resilience and Earthquake Performance Assessment through Response Evidence</td>
+<td>Explores machine-learning approaches for relating earthquake intensity and simulated structural response to observed damage.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="pend-period-energy-damping" class="level3">
+<h3 class="anchored" data-anchor-id="pend-period-energy-damping">PEnD: Period, Energy, Damping</h3>
+<p>Alongside the framework’s modules, I am developing <strong>PEnD</strong>, which stands for <strong>Period, Energy, Damping</strong>. It represents a proposed pair of measures: the intensity measure <strong>IM_PEnD</strong> and the damage index <strong>DI_PEnD</strong>.</p>
+<p>This work investigates how period, energy, and damping can inform the characterization of earthquake demand and structural damage. The proposed measures are being developed and evaluated within RECoVER.</p>
+</section>
+<section id="connecting-engineering-and-data-science" class="level3">
+<h3 class="anchored" data-anchor-id="connecting-engineering-and-data-science">Connecting engineering and data science</h3>
+<p>Developing this framework has strengthened my interest in reproducible computing, data analysis, and machine learning. My studies in computational linguistics are also motivating me to explore how information in technical documents could support future engineering research.</p>
+<p><strong>Project status:</strong> Active research and development. The modules are at different stages of implementation and validation. <strong>Project fuled by:</strong> Earthquake Engineering Research Facility</p>
 
 
+</section>
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1789282800000" data-listing-file-modified-sort="1789343583190" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="169">
-<div class="thumbnail"><a href="./posts/first-weeks/index.html" class="no-external">
-
-<p class="card-img-top"><img loading='lazy' src="posts\first-weeks\workspace.jpg"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/first-weeks/index.html" class="no-external">My first weeks</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/first-weeks/index.html" class="no-external">
-My first weeks at UBC involved getting familiar with a broad set of tools. I have been working with Python, R, JupyterLab, Git, GitHub, and the Bash terminal. Although I…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/first-weeks/index.html" class="no-external">
-<div class="listing-date">
-Sep 13, 2026
-</div>
-<div class="listing-author">
-Behtash JavidSharifi
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

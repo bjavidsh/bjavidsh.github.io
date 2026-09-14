@@ -1,17 +1,24 @@
 [
   {
-    "objectID": "posts/first-weeks/index.html",
-    "href": "posts/first-weeks/index.html",
-    "title": "My first weeks",
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
     "section": "",
-    "text": "My first weeks at UBC involved getting familiar with a broad set of tools. I have been working with Python, R, JupyterLab, Git, GitHub, and the Bash terminal. Although I have used computational tools in engineering research, learning how these tools fit together into a consistent workflow has brought new challenges.\nOne practical lesson has been that writing code is only part of the work. Running a notebook from beginning to end, rendering a document, and keeping track of changes all require attention. Setting up this website has helped me connect several of these steps: editing source files, previewing the result, and recording changes with Git.\nAs the program continues, I hope to become more confident with these workflows and spend more time exploring the questions they can help answer. I am especially interested in connections between NLP, earthquake engineering, earthquake seismology, and seismic hazards. For now, this website gives me a place to document what I am learning and reflect on my progress.\n\n\n\nMy workspace during the first weeks at UBC."
+    "text": "Resilience-oriented Experimental–numerical Correlation Of Vibration, Energy, and Response\nRECoVER is a research framework I am developing as part of my doctoral work in earthquake engineering. It connects field observations, ambient vibration measurements, structural modelling, and earthquake response simulations to investigate relationships between ground motion, structural response, and observed building damage.\nMy research focuses on low- to mid-rise reinforced-concrete school buildings, with a case study of the schools affected by the 2023 Türkiye earthquake sequence. Through RECoVER, I aim to bring experimental evidence and numerical analysis into a consistent workflow for studying earthquake damage.\n\n\n\n\n\n\n\n\n\n\nModule\nFull name\nRole in the framework\n\n\n\n\nSAVER\nSeismic Ambient Vibration Evaluation for Resilience\nAnalyses ambient vibration measurements to identify structural vibration characteristics and provide experimental targets for model assessment.\n\n\nDISASTER\nDynamic Inference and Simulation Analysis for Structural Transformation and Earthquake Response\nUses MATLAB and OpenSees to simulate structural response to earthquake ground motions and evaluate response demands, energy measures, and damage indices.\n\n\nRESCuE\nResponse-backbone Extraction and Simulation Calibration Using ETABS\nProcesses ETABS pushover results to derive structural backbones and parameters for simplified nonlinear models.\n\n\nSECURE\nStructural Earthquake-sequence Calibration for Undamaged-state Reverse Estimation\nHandshakes ETABS OAPI and MATLAB and also seeks to estimate undamaged structural properties by comparing simulated post-sequence vibration characteristics with field measurements.\n\n\nPREPARE\nPredictive Resilience and Earthquake Performance Assessment through Response Evidence\nExplores machine-learning approaches for relating earthquake intensity and simulated structural response to observed damage.\n\n\n\n\n\n\nAlongside the framework’s modules, I am developing PEnD, which stands for Period, Energy, Damping. It represents a proposed pair of measures: the intensity measure IM_PEnD and the damage index DI_PEnD.\nThis work investigates how period, energy, and damping can inform the characterization of earthquake demand and structural damage. The proposed measures are being developed and evaluated within RECoVER.\n\n\n\nDeveloping this framework has strengthened my interest in reproducible computing, data analysis, and machine learning. My studies in computational linguistics are also motivating me to explore how information in technical documents could support future engineering research.\nProject status: Active research and development. The modules are at different stages of implementation and validation. Project fuled by: Earthquake Engineering Research Facility"
   },
   {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "Blog",
+    "objectID": "projects.html#recover",
+    "href": "projects.html#recover",
+    "title": "Projects",
     "section": "",
-    "text": "My first weeks\n\n\n\n\n\n\n\n\nSep 13, 2026\n\n\nBehtash JavidSharifi\n\n\n\n\n\nNo matching items"
+    "text": "Resilience-oriented Experimental–numerical Correlation Of Vibration, Energy, and Response\nRECoVER is a research framework I am developing as part of my doctoral work in earthquake engineering. It connects field observations, ambient vibration measurements, structural modelling, and earthquake response simulations to investigate relationships between ground motion, structural response, and observed building damage.\nMy research focuses on low- to mid-rise reinforced-concrete school buildings, with a case study of the schools affected by the 2023 Türkiye earthquake sequence. Through RECoVER, I aim to bring experimental evidence and numerical analysis into a consistent workflow for studying earthquake damage.\n\n\n\n\n\n\n\n\n\n\nModule\nFull name\nRole in the framework\n\n\n\n\nSAVER\nSeismic Ambient Vibration Evaluation for Resilience\nAnalyses ambient vibration measurements to identify structural vibration characteristics and provide experimental targets for model assessment.\n\n\nDISASTER\nDynamic Inference and Simulation Analysis for Structural Transformation and Earthquake Response\nUses MATLAB and OpenSees to simulate structural response to earthquake ground motions and evaluate response demands, energy measures, and damage indices.\n\n\nRESCuE\nResponse-backbone Extraction and Simulation Calibration Using ETABS\nProcesses ETABS pushover results to derive structural backbones and parameters for simplified nonlinear models.\n\n\nSECURE\nStructural Earthquake-sequence Calibration for Undamaged-state Reverse Estimation\nHandshakes ETABS OAPI and MATLAB and also seeks to estimate undamaged structural properties by comparing simulated post-sequence vibration characteristics with field measurements.\n\n\nPREPARE\nPredictive Resilience and Earthquake Performance Assessment through Response Evidence\nExplores machine-learning approaches for relating earthquake intensity and simulated structural response to observed damage.\n\n\n\n\n\n\nAlongside the framework’s modules, I am developing PEnD, which stands for Period, Energy, Damping. It represents a proposed pair of measures: the intensity measure IM_PEnD and the damage index DI_PEnD.\nThis work investigates how period, energy, and damping can inform the characterization of earthquake demand and structural damage. The proposed measures are being developed and evaluated within RECoVER.\n\n\n\nDeveloping this framework has strengthened my interest in reproducible computing, data analysis, and machine learning. My studies in computational linguistics are also motivating me to explore how information in technical documents could support future engineering research.\nProject status: Active research and development. The modules are at different stages of implementation and validation. Project fuled by: Earthquake Engineering Research Facility"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Behtash Javidsharifi (AKA James Javid)",
+    "section": "",
+    "text": "Welcome! My background is in civil engineering. My PhD-level research focused on empirical approaches to earthquake damage correlation. I have developed an interest in data science, and I am working hard to quench it! My interests connect structural engineering, languages, machine learning, and natural language processing. I hope to strengthen my computational skills and apply them to interdisciplinary research and practical problems.\nThis is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
   },
   {
     "objectID": "about.html",
@@ -42,10 +49,17 @@
     "text": "Outside of data science\nOutside my studies, I enjoy working out, martial arts, and exploring languages. Poetry and literature are also important interests of mine. Learning languages gives me another way to engage with different perspectives and balances the technical focus of my research. About this site"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Behtash Javidsharifi (AKA James Javid)",
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
     "section": "",
-    "text": "Welcome! My background is in civil engineering. My PhD-level research focused on empirical approaches to earthquake damage correlation. I have developed an interest in data science, and I am working hard to quench it! My interests connect structural engineering, languages, machine learning, and natural language processing. I hope to strengthen my computational skills and apply them to interdisciplinary research and practical problems.\nThis is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "My first weeks\n\n\n\n\n\n\n\n\nSep 13, 2026\n\n\nBehtash JavidSharifi\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/first-weeks/index.html",
+    "href": "posts/first-weeks/index.html",
+    "title": "My first weeks",
+    "section": "",
+    "text": "My first weeks at UBC involved getting familiar with a broad set of tools. I have been working with Python, R, JupyterLab, Git, GitHub, and the Bash terminal. Although I have used computational tools in engineering research, learning how these tools fit together into a consistent workflow has brought new challenges.\nOne practical lesson has been that writing code is only part of the work. Running a notebook from beginning to end, rendering a document, and keeping track of changes all require attention. Setting up this website has helped me connect several of these steps: editing source files, previewing the result, and recording changes with Git.\nAs the program continues, I hope to become more confident with these workflows and spend more time exploring the questions they can help answer. I am especially interested in connections between NLP, earthquake engineering, earthquake seismology, and seismic hazards. For now, this website gives me a place to document what I am learning and reflect on my progress.\n\n\n\nMy workspace during the first weeks at UBC."
   }
 ]
