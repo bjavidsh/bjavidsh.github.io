@@ -4,7 +4,7 @@ title: "Projects"
 ---
 
 ## RECoVER
-
+![AI-generated conceptual illustration of RECoVER, connecting field measurements, structural simulation, and earthquake response analysis.](images/recover-project.png){width=100%}
 **Resilience-oriented Experimental–numerical Correlation Of Vibration, Energy, and Response**
 
 RECoVER is a research framework I am developing as part of my doctoral work in earthquake engineering. It connects field observations, ambient vibration measurements, structural modelling, and earthquake response simulations to investigate relationships between ground motion, structural response, and observed building damage.
