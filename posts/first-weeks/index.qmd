@@ -1,0 +1,14 @@
+
+---
+title: "My first weeks"
+author: "Behtash JavidSharifi"
+date: 2026-09-13
+---
+
+My first weeks at UBC involved getting familiar with a broad set of tools. I have been working with Python, R, JupyterLab, Git, GitHub, and the Bash terminal. Although I have used computational tools in engineering research, learning how these tools fit together into a consistent workflow has brought new challenges.
+
+One practical lesson has been that writing code is only part of the work. Running a notebook from beginning to end, rendering a document, and keeping track of changes all require attention. Setting up this website has helped me connect several of these steps: editing source files, previewing the result, and recording changes with Git.
+
+As the program continues, I hope to become more confident with these workflows and spend more time exploring the questions they can help answer. I am especially interested in connections between NLP, earthquake engineering, earthquake seismology, and seismic hazards. For now, this website gives me a place to document what I am learning and reflect on my progress.
+
+![My workspace during the first weeks at UBC.](workspace.jpg)

@@ -1,10 +1,17 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Behtash Javidsharifi (AKA James Javid)",
+    "objectID": "posts/first-weeks/index.html",
+    "href": "posts/first-weeks/index.html",
+    "title": "My first weeks",
     "section": "",
-    "text": "Welcome! My background is in civil engineering. My PhD-level research focused on empirical approaches to earthquake damage correlation. I have developed an interest in data science, and I am working hard to quench it! My interests connect structural engineering, languages, machine learning, and natural language processing. I hope to strengthen my computational skills and apply them to interdisciplinary research and practical problems.\nThis is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "My first weeks at UBC involved getting familiar with a broad set of tools. I have been working with Python, R, JupyterLab, Git, GitHub, and the Bash terminal. Although I have used computational tools in engineering research, learning how these tools fit together into a consistent workflow has brought new challenges.\nOne practical lesson has been that writing code is only part of the work. Running a notebook from beginning to end, rendering a document, and keeping track of changes all require attention. Setting up this website has helped me connect several of these steps: editing source files, previewing the result, and recording changes with Git.\nAs the program continues, I hope to become more confident with these workflows and spend more time exploring the questions they can help answer. I am especially interested in connections between NLP, earthquake engineering, earthquake seismology, and seismic hazards. For now, this website gives me a place to document what I am learning and reflect on my progress.\n\n\n\nMy workspace during the first weeks at UBC."
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
+    "section": "",
+    "text": "My first weeks\n\n\n\n\n\n\n\n\nSep 13, 2026\n\n\nBehtash JavidSharifi\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -33,5 +40,12 @@
     "title": "About",
     "section": "Outside of data science",
     "text": "Outside of data science\nOutside my studies, I enjoy working out, martial arts, and exploring languages. Poetry and literature are also important interests of mine. Learning languages gives me another way to engage with different perspectives and balances the technical focus of my research. About this site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Behtash Javidsharifi (AKA James Javid)",
+    "section": "",
+    "text": "Welcome! My background is in civil engineering. My PhD-level research focused on empirical approaches to earthquake damage correlation. I have developed an interest in data science, and I am working hard to quench it! My interests connect structural engineering, languages, machine learning, and natural language processing. I hope to strengthen my computational skills and apply them to interdisciplinary research and practical problems.\nThis is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
   }
 ]
