@@ -141,3 +141,10 @@ Local package libraries and temporary files, including `.venv/`,
 After changing dependencies, update the appropriate lockfile:
 use `uv add` for Python packages, or install R packages and then run
 `renv::snapshot()` from R in the project.
+
+## Build verification
+
+The restoration and rendering commands were successfully tested in a
+separate local Git clone on Windows 11. Python used the clone's own
+`.venv`, renv reported a consistent project, and all seven website
+pages rendered successfully.

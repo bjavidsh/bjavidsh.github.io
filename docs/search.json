@@ -14,6 +14,69 @@
     "text": "Resilience-oriented Experimental–numerical Correlation Of Vibration, Energy, and Response\nRECoVER is a research framework I am developing as part of my doctoral work in earthquake engineering. It connects field observations, ambient vibration measurements, structural modelling, and earthquake response simulations to investigate relationships between ground motion, structural response, and observed building damage.\nMy research focuses on low- to mid-rise reinforced-concrete school buildings, with a case study of the schools affected by the 2023 Türkiye earthquake sequence. Through RECoVER, I aim to bring experimental evidence and numerical analysis into a consistent workflow for studying earthquake damage.\n\n\n\n\n\n\n\n\n\n\nModule\nFull name\nRole in the framework\n\n\n\n\nSAVER\nSeismic Ambient Vibration Evaluation for Resilience\nAnalyses ambient vibration measurements to identify structural vibration characteristics and provide experimental targets for model assessment.\n\n\nDISASTER\nDynamic Inference and Simulation Analysis for Structural Transformation and Earthquake Response\nUses MATLAB and OpenSees to simulate structural response to earthquake ground motions and evaluate response demands, energy measures, and damage indices.\n\n\nRESCuE\nResponse-backbone Extraction and Simulation Calibration Using ETABS\nProcesses ETABS pushover results to derive structural backbones and parameters for simplified nonlinear models.\n\n\nSECURE\nStructural Earthquake-sequence Calibration for Undamaged-state Reverse Estimation\nHandshakes ETABS OAPI and MATLAB and also seeks to estimate undamaged structural properties by comparing simulated post-sequence vibration characteristics with field measurements.\n\n\nPREPARE\nPredictive Resilience and Earthquake Performance Assessment through Response Evidence\nExplores machine-learning approaches for relating earthquake intensity and simulated structural response to observed damage.\n\n\n\n\n\n\nAlongside the framework’s modules, I am developing PEnD, which stands for Period, Energy, Damping. It represents a proposed pair of measures: the intensity measure IM_PEnD and the damage index DI_PEnD.\nThis work investigates how period, energy, and damping can inform the characterization of earthquake demand and structural damage. The proposed measures are being developed and evaluated within RECoVER.\n\n\n\nDeveloping this framework has strengthened my interest in reproducible computing, data analysis, and machine learning. My studies in computational linguistics are also motivating me to explore how information in technical documents could support future engineering research.\nProject status: Active research and development. The modules are at different stages of implementation and validation. Project fuled by: Earthquake Engineering Research Facility"
   },
   {
+    "objectID": "posts/field-study-buildings/index.html",
+    "href": "posts/field-study-buildings/index.html",
+    "title": "School buildings in my earthquake field research",
+    "section": "",
+    "text": "My PhD research examines relationships between earthquake ground motion, structural response, and observed building damage. As part of this work, RECoVER brings together field evidence and numerical analysis.\nThis post describes the building sample recorded in one snapshot of my field ambient-vibration review workbook. Before examining vibration characteristics, I want to understand which buildings and damage categories the dataset represents."
+  },
+  {
+    "objectID": "posts/field-study-buildings/index.html#why-describe-the-building-sample",
+    "href": "posts/field-study-buildings/index.html#why-describe-the-building-sample",
+    "title": "School buildings in my earthquake field research",
+    "section": "",
+    "text": "My PhD research examines relationships between earthquake ground motion, structural response, and observed building damage. As part of this work, RECoVER brings together field evidence and numerical analysis.\nThis post describes the building sample recorded in one snapshot of my field ambient-vibration review workbook. Before examining vibration characteristics, I want to understand which buildings and damage categories the dataset represents."
+  },
+  {
+    "objectID": "posts/field-study-buildings/index.html#data-source-and-scope",
+    "href": "posts/field-study-buildings/index.html#data-source-and-scope",
+    "title": "School buildings in my earthquake field research",
+    "section": "Data source and scope",
+    "text": "Data source and scope\nThe data come from the CASE_REVIEW sheet of my RECoVER_FieldAV_AdjudicationWorkbook_AR38D.xlsx research workbook.\nThe building-data CSV contains the selected columns used here. It retains the workbook’s building identifiers, reported storey counts, damage labels, and evidence routes.\nThis is a descriptive analysis of a research sample. It does not establish that building height caused a particular damage level. The workbook’s modal selections remain a separate review task."
+  },
+  {
+    "objectID": "posts/field-study-buildings/index.html#load-the-packages",
+    "href": "posts/field-study-buildings/index.html#load-the-packages",
+    "title": "School buildings in my earthquake field research",
+    "section": "Load the packages",
+    "text": "Load the packages\nI suppress package startup messages to keep the page readable. The analysis code and its results remain visible.\n\nlibrary(readr)\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(knitr)"
+  },
+  {
+    "objectID": "posts/field-study-buildings/index.html#read-and-inspect-the-building-records",
+    "href": "posts/field-study-buildings/index.html#read-and-inspect-the-building-records",
+    "title": "School buildings in my earthquake field research",
+    "section": "Read and inspect the building records",
+    "text": "Read and inspect the building records\nEach row represents one building case. A station can be associated with more than one building, so I use CaseID to identify individual records.\n\nbuildings &lt;- read_csv(\n  \"field-av-buildings.csv\",\n  show_col_types = FALSE\n)\n\nbuildings |&gt;\n  select(CaseID, StoreysReported, FieldDamageLabel) |&gt;\n  kable(\n    col.names = c(\"Building case\", \"Reported storeys\", \"Recorded damage\")\n  )\n\n\n\n\nBuilding case\nReported storeys\nRecorded damage\n\n\n\n\nTK4616-1\n5.0\nModerate damage\n\n\nTK4632-2\n3.5\nNo damage observed\n\n\nTK2718-3\n5.0\nModerate damage\n\n\nTK3143-4\n2.0\nNo damage observed\n\n\nTK4616-5\n4.0\nLow damage\n\n\nTK4616-6\n5.5\nLow damage\n\n\nTK3126-7\n3.0\nModerate damage\n\n\nTK3129-8\n2.0\nLow damage\n\n\nTK3142-9\n3.5\nModerate damage\n\n\nTK3135-10\n4.5\nSevere damage\n\n\nTK3126-11\n4.5\nLow damage\n\n\nTK3144-12\n2.0\nNo damage observed\n\n\nTK3123-13\n4.0\nLow damage\n\n\nTK2712-14\n2.0\nModerate damage"
+  },
+  {
+    "objectID": "posts/field-study-buildings/index.html#check-completeness-and-identifiers",
+    "href": "posts/field-study-buildings/index.html#check-completeness-and-identifiers",
+    "title": "School buildings in my earthquake field research",
+    "section": "Check completeness and identifiers",
+    "text": "Check completeness and identifiers\nBefore calculating summaries, I check for missing values and repeated building identifiers.\n\ndata_checks &lt;- buildings |&gt;\n  summarise(\n    building_records = n(),\n    unique_buildings = n_distinct(CaseID),\n    missing_storeys = sum(is.na(StoreysReported)),\n    missing_damage_labels = sum(is.na(FieldDamageLabel))\n  )\n\nkable(data_checks)\n\n\n\n\n\n\n\n\n\n\nbuilding_records\nunique_buildings\nmissing_storeys\nmissing_damage_labels\n\n\n\n\n14\n14\n0\n0"
+  },
+  {
+    "objectID": "posts/field-study-buildings/index.html#summarize-the-recorded-damage-categories",
+    "href": "posts/field-study-buildings/index.html#summarize-the-recorded-damage-categories",
+    "title": "School buildings in my earthquake field research",
+    "section": "Summarize the recorded damage categories",
+    "text": "Summarize the recorded damage categories\nThe table shows how many buildings fall in each recorded damage category, together with their mean and range of reported storey counts.\n\ndamage_summary &lt;- buildings |&gt;\n  group_by(FieldDamageLabel) |&gt;\n  summarise(\n    buildings = n(),\n    mean_storeys = mean(StoreysReported),\n    minimum_storeys = min(StoreysReported),\n    maximum_storeys = max(StoreysReported),\n    .groups = \"drop\"\n  )\n\nkable(\n  damage_summary,\n  digits = 2,\n  col.names = c(\n    \"Recorded damage\", \"Buildings\", \"Mean storeys\",\n    \"Minimum storeys\", \"Maximum storeys\"\n  )\n)\n\n\n\n\n\n\n\n\n\n\n\nRecorded damage\nBuildings\nMean storeys\nMinimum storeys\nMaximum storeys\n\n\n\n\nLow damage\n5\n4.0\n2.0\n5.5\n\n\nModerate damage\n5\n3.7\n2.0\n5.0\n\n\nNo damage observed\n3\n2.5\n2.0\n3.5\n\n\nSevere damage\n1\n4.5\n4.5\n4.5"
+  },
+  {
+    "objectID": "posts/field-study-buildings/index.html#compare-the-building-sample-visually",
+    "href": "posts/field-study-buildings/index.html#compare-the-building-sample-visually",
+    "title": "School buildings in my earthquake field research",
+    "section": "Compare the building sample visually",
+    "text": "Compare the building sample visually\nPoint size represents the number of buildings sharing the same damage label and reported storey count.\nFractional storey counts are preserved as reported in the workbook. They have not been rounded or reinterpreted.\n\nggplot(\n  buildings,\n  aes(x = StoreysReported, y = FieldDamageLabel)\n) +\n  geom_count(colour = \"#2563EB\") +\n  scale_size_area(max_size = 9, breaks = c(1, 2)) +\n  labs(\n    x = \"Reported number of storeys\",\n    y = \"Recorded damage category\",\n    size = \"Buildings\"\n  ) +\n  theme_minimal(base_size = 12)\n\n\n\n\n\n\n\nFigure 1: Reported storey counts by recorded damage category. Larger points indicate more buildings at the same position."
+  },
+  {
+    "objectID": "posts/field-study-buildings/index.html#what-does-this-snapshot-show",
+    "href": "posts/field-study-buildings/index.html#what-does-this-snapshot-show",
+    "title": "School buildings in my earthquake field research",
+    "section": "What does this snapshot show?",
+    "text": "What does this snapshot show?\nThe sample includes buildings with several recorded damage levels. Moderate and low damage are the most common labels in this snapshot, while severe damage is represented by only one building.\nThe categories also overlap in reported storey count. These descriptive results do not isolate the effects of structural design, construction quality, or earthquake exposure.\nFor my research, this overview helps document the sample before moving to the separate tasks of reviewing vibration evidence and comparing structural models."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Behtash Javidsharifi (AKA James Javid)",
@@ -53,7 +116,70 @@
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "My first weeks\n\n\n\n\n\n\n\n\nSep 13, 2026\n\n\nBehtash JavidSharifi\n\n\n\n\n\nNo matching items"
+    "text": "Do candidate vibration frequencies recur across recording windows?\n\n\n\n\n\n\n\n\nSep 23, 2026\n\n\nBehtash JavidSharifi\n\n\n\n\n\n\n\n\n\n\n\n\nSchool buildings in my earthquake field research\n\n\n\n\n\n\n\n\nSep 23, 2026\n\n\nBehtash JavidSharifi\n\n\n\n\n\n\n\n\n\n\n\n\nMy first weeks\n\n\n\n\n\n\n\n\nSep 13, 2026\n\n\nBehtash JavidSharifi\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/ambient-vibration-repeatability/index.html",
+    "href": "posts/ambient-vibration-repeatability/index.html",
+    "title": "Do candidate vibration frequencies recur across recording windows?",
+    "section": "",
+    "text": "My PhD research uses ambient-vibration evidence to help characterize buildings affected by earthquakes. One useful review question is whether similar candidate frequencies appear in different portions of a recording.\nHere, I examine frequency families assembled from early, middle, and late recording windows. A family groups nearby candidate frequencies within one building case. Recurrence can help prioritize further review, but it does not by itself confirm a structural mode."
+  },
+  {
+    "objectID": "posts/ambient-vibration-repeatability/index.html#why-examine-recurrence",
+    "href": "posts/ambient-vibration-repeatability/index.html#why-examine-recurrence",
+    "title": "Do candidate vibration frequencies recur across recording windows?",
+    "section": "",
+    "text": "My PhD research uses ambient-vibration evidence to help characterize buildings affected by earthquakes. One useful review question is whether similar candidate frequencies appear in different portions of a recording.\nHere, I examine frequency families assembled from early, middle, and late recording windows. A family groups nearby candidate frequencies within one building case. Recurrence can help prioritize further review, but it does not by itself confirm a structural mode."
+  },
+  {
+    "objectID": "posts/ambient-vibration-repeatability/index.html#data-source-and-scope",
+    "href": "posts/ambient-vibration-repeatability/index.html#data-source-and-scope",
+    "title": "Do candidate vibration frequencies recur across recording windows?",
+    "section": "Data source and scope",
+    "text": "Data source and scope\nThe data come from the FAMILIES sheet of my RECoVER_FieldAV_AdjudicationWorkbook_AR38D.xlsx research workbook.\nThe frequency-family CSV contains the selected fields used in this analysis, including building identifiers, frequency summaries, window counts, and review flags.\nEach row represents one candidate frequency family, not one building. These are processed research records, rather than raw sensor measurements. The source workbook marks every family as not automatically accepted."
+  },
+  {
+    "objectID": "posts/ambient-vibration-repeatability/index.html#load-the-packages",
+    "href": "posts/ambient-vibration-repeatability/index.html#load-the-packages",
+    "title": "Do candidate vibration frequencies recur across recording windows?",
+    "section": "Load the packages",
+    "text": "Load the packages\nI use pandas for reading and summarizing the records and matplotlib for the figure.\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom IPython.display import display"
+  },
+  {
+    "objectID": "posts/ambient-vibration-repeatability/index.html#read-and-check-the-records",
+    "href": "posts/ambient-vibration-repeatability/index.html#read-and-check-the-records",
+    "title": "Do candidate vibration frequencies recur across recording windows?",
+    "section": "Read and check the records",
+    "text": "Read and check the records\nI check the fields required for this analysis, verify that family identifiers are unique within each case, and confirm that window counts fall within the three recording windows.\n\nfamilies = pd.read_csv(\"field-av-frequency-families.csv\")\n\nrequired = [\n    \"CaseID\",\n    \"FamilyID\",\n    \"FrequencyMedian_Hz\",\n    \"WindowsRepresented\",\n    \"RelativeFrequencySpread_pct\",\n]\n\nassert families[required].notna().all().all()\nassert not families.duplicated([\"CaseID\", \"FamilyID\"]).any()\nassert families[\"WindowsRepresented\"].isin([1, 2, 3]).all()\nassert families[\"FrequencyMedian_Hz\"].gt(0).all()\nassert families[\"RelativeFrequencySpread_pct\"].ge(0).all()\n\noverview = pd.DataFrame({\n    \"Frequency families\": [len(families)],\n    \"Building cases\": [families[\"CaseID\"].nunique()],\n    \"Missing required values\": [\n        families[required].isna().sum().sum()\n    ],\n})\n\ndisplay(overview)\n\n\n\n\n\n\n\n\nFrequency families\nBuilding cases\nMissing required values\n\n\n\n\n0\n87\n13\n0\n\n\n\n\n\n\n\nThis snapshot contains 87 candidate frequency families across 13 building cases. Multiple families can belong to the same building.\nThe externally analysed case TK3144-12 is absent from this automatic family table. Its absence does not mean that the building has no vibration modes."
+  },
+  {
+    "objectID": "posts/ambient-vibration-repeatability/index.html#count-recurrence-across-windows",
+    "href": "posts/ambient-vibration-repeatability/index.html#count-recurrence-across-windows",
+    "title": "Do candidate vibration frequencies recur across recording windows?",
+    "section": "Count recurrence across windows",
+    "text": "Count recurrence across windows\nI count how many families appear in one, two, or all three windows. The percentage denominator is the total number of families.\n\nrecurrence = (\n    families[\"WindowsRepresented\"]\n    .value_counts()\n    .reindex([1, 2, 3], fill_value=0)\n    .rename_axis(\"Windows represented\")\n    .reset_index(name=\"Frequency families\")\n)\n\nrecurrence[\"Percentage of families\"] = (\n    100 * recurrence[\"Frequency families\"] / len(families)\n).round(1)\n\ndisplay(recurrence)\n\n\n\n\n\n\n\n\nWindows represented\nFrequency families\nPercentage of families\n\n\n\n\n0\n1\n42\n48.3\n\n\n1\n2\n26\n29.9\n\n\n2\n3\n19\n21.8\n\n\n\n\n\n\n\nThere are 42 families represented in one window, 26 in two windows, and 19 in all three. Therefore, 45 of the 87 families appear in at least two windows.\nThese are family-level counts. Buildings contributing more families have more influence on this summary."
+  },
+  {
+    "objectID": "posts/ambient-vibration-repeatability/index.html#visualize-recurrence",
+    "href": "posts/ambient-vibration-repeatability/index.html#visualize-recurrence",
+    "title": "Do candidate vibration frequencies recur across recording windows?",
+    "section": "Visualize recurrence",
+    "text": "Visualize recurrence\nThe figure shows the number of families in each recurrence category. Integer labels above the bars make the counts explicit.\n\nfig, ax = plt.subplots(figsize=(7, 4))\n\nbars = ax.bar(\n    recurrence[\"Windows represented\"],\n    recurrence[\"Frequency families\"],\n    color=\"#2563EB\",\n)\n\nax.bar_label(bars, padding=3)\nax.set(\n    xticks=[1, 2, 3],\n    xlabel=\"Number of recording windows represented\",\n    ylabel=\"Number of candidate frequency families\",\n    ylim=(0, 50),\n)\nax.spines[[\"top\", \"right\"]].set_visible(False)\n\nfig.tight_layout()\nplt.show()\n\n\n\n\n\n\n\nFigure 1: Candidate frequency families represented in one, two, or three recording windows. Counts refer to families, not buildings."
+  },
+  {
+    "objectID": "posts/ambient-vibration-repeatability/index.html#examine-frequency-spread-among-recurring-families",
+    "href": "posts/ambient-vibration-repeatability/index.html#examine-frequency-spread-among-recurring-families",
+    "title": "Do candidate vibration frequencies recur across recording windows?",
+    "section": "Examine frequency spread among recurring families",
+    "text": "Examine frequency spread among recurring families\nRecurrence and frequency spread describe different aspects of the evidence. A family can recur across windows while its candidate frequencies vary.\nFor this comparison, I retain families represented in at least two windows. A family containing only one candidate necessarily has zero observed spread, which would not demonstrate repeatability.\nI summarize the workbook’s recorded relative frequency spread. The values are percentages, not confidence intervals.\n\nrepeated = families.loc[\n    families[\"WindowsRepresented\"] &gt;= 2\n]\n\nspread_summary = (\n    repeated.groupby(\"WindowsRepresented\")[\n        \"RelativeFrequencySpread_pct\"\n    ]\n    .agg([\"count\", \"median\", \"min\", \"max\"])\n    .rename(columns={\n        \"count\": \"Families\",\n        \"median\": \"Median spread (%)\",\n        \"min\": \"Minimum spread (%)\",\n        \"max\": \"Maximum spread (%)\",\n    })\n    .rename_axis(\"Windows represented\")\n    .reset_index()\n    .round(2)\n)\n\ndisplay(spread_summary)\n\n\n\n\n\n\n\n\nWindows represented\nFamilies\nMedian spread (%)\nMinimum spread (%)\nMaximum spread (%)\n\n\n\n\n0\n2\n26\n1.77\n0.16\n4.59\n\n\n1\n3\n19\n3.39\n0.41\n7.39\n\n\n\n\n\n\n\nThe median recorded spread is approximately 1.77% for families represented in two windows and 3.39% for families represented in three windows.\nThis comparison involves different sets of families. It does not show that adding a window causes a larger spread. The grouping rule and number of candidate observations also affect the summaries."
+  },
+  {
+    "objectID": "posts/ambient-vibration-repeatability/index.html#what-does-this-mean-for-my-research",
+    "href": "posts/ambient-vibration-repeatability/index.html#what-does-this-mean-for-my-research",
+    "title": "Do candidate vibration frequencies recur across recording windows?",
+    "section": "What does this mean for my research?",
+    "text": "What does this mean for my research?\nIn this snapshot, just over half of the candidate frequency families appear in more than one recording window. These recurring families provide a useful starting point for closer review.\nHowever, the windows come from the same building recordings and are not independent building observations. Recurrence alone cannot identify a frequency as a translational or torsional structural mode.\nFor my RECoVER workflow, this analysis documents the available candidate evidence before reviewing directions, mode shapes, and other diagnostics. Final modal selections remain a separate task."
   },
   {
     "objectID": "posts/first-weeks/index.html",
