@@ -1,0 +1,200 @@
+---
+title: "From R to Python and back: reviewing vibration-frequency recurrence"
+author: "Behtash JavidSharifi"
+date: "2026-09-23"
+categories: [Earthquake Engineering, RECoVER, R, Python]
+engine: knitr
+format:
+  html:
+    code-fold: false
+execute:
+  echo: true
+  cache: false
+  freeze: false
+---
+
+## Why combine R and Python?
+
+My doctoral research uses ambient-vibration evidence to help characterize
+buildings affected by earthquakes. This post demonstrates a workflow in
+which R summarizes candidate frequency families, Python calculates their
+relative frequencies, and R presents the returned results.
+
+The objects pass directly between the two languages through reticulate.
+No intermediate CSV is written or reloaded during that exchange.
+
+## Data source and scope
+
+The data come from the `FAMILIES` sheet of my
+`RECoVER_FieldAV_AdjudicationWorkbook_AR38D.xlsx` research workbook.
+
+I reuse the
+[frequency-family CSV](../ambient-vibration-repeatability/field-av-frequency-families.csv)
+introduced in my
+[Python analysis](../ambient-vibration-repeatability/index.qmd).
+
+Each row describes a candidate frequency family within a building case.
+These families are not automatically accepted structural modes.
+
+This preliminary research sample is shared to demonstrate a reproducible
+analysis workflow for DSCI 521 Milestone 3 and my research portfolio.
+It represents a selected workbook snapshot, rather than the complete
+or final research dataset. The results should not be interpreted as
+final thesis findings.
+
+## Connect the project environments
+
+I select the Python interpreter inside this project's virtual environment
+before initializing Python. Package startup messages are suppressed to
+keep the page readable; code and analytical results remain visible.
+
+```{r}
+#| label: setup
+#| message: false
+
+project_root <- Sys.getenv("QUARTO_PROJECT_DIR")
+stopifnot(nzchar(project_root))
+
+python_path <- file.path(
+  project_root,
+  ".venv",
+  if (.Platform$OS.type == "windows") {
+    "Scripts/python.exe"
+  } else {
+    "bin/python"
+  }
+)
+
+Sys.setenv(
+  RETICULATE_PYTHON = normalizePath(
+    python_path, winslash = "/", mustWork = TRUE
+  )
+)
+
+library(reticulate)
+library(readr)
+library(dplyr)
+library(knitr)
+```
+
+## Summarize the records in R
+
+I check the recording-window counts and count the families represented
+in each recurrence category.
+
+```{r}
+#| label: summarize-in-r
+
+families <- read_csv(
+  file.path(
+    project_root,
+    "posts",
+    "ambient-vibration-repeatability",
+    "field-av-frequency-families.csv"
+  ),
+  show_col_types = FALSE
+)
+
+stopifnot(
+  nrow(families) > 0,
+  !anyNA(families$WindowsRepresented),
+  all(families$WindowsRepresented %in% 1:3)
+)
+
+recurrence_r <- families |>
+  count(WindowsRepresented, name = "Families") |>
+  arrange(WindowsRepresented) |>
+  as.data.frame()
+
+kable(
+  recurrence_r,
+  col.names = c("Windows represented", "Candidate families")
+)
+```
+
+## Pass the R summary to Python
+
+Python accesses the R object through `r.recurrence_r`. It calculates
+each category's percentage of all candidate families and the percentage
+represented in at least two windows.
+
+```{python}
+#| label: calculate-in-python
+
+import pandas as pd
+
+recurrence_py = r.recurrence_r.copy()
+assert isinstance(recurrence_py, pd.DataFrame)
+
+recurrence_py["Percentage"] = (
+    100 * recurrence_py["Families"]
+    / recurrence_py["Families"].sum()
+)
+
+repeated_percentage = float(
+    recurrence_py.loc[
+        recurrence_py["WindowsRepresented"] >= 2,
+        "Percentage"
+    ].sum()
+)
+
+print(recurrence_py.to_string(index=False))
+```
+
+## Bring the Python result back to R
+
+R accesses the Python objects through `py$`. The percentage column
+below was computed in Python, rather than recalculated in R.
+
+```{r}
+#| label: present-python-results-in-r
+
+returned_summary <- py$recurrence_py
+
+stopifnot(
+  isTRUE(all.equal(
+    sum(returned_summary$Percentage),
+    100,
+    tolerance = 1e-8
+  ))
+)
+
+kable(
+  returned_summary,
+  digits = 1,
+  col.names = c(
+    "Windows represented",
+    "Candidate families",
+    "Percentage of families"
+  ),
+  caption = "Counts computed in R, with percentages computed in Python."
+)
+
+cat(sprintf(
+  "%.1f%% of candidate families appear in at least two recording windows.",
+  py$repeated_percentage
+))
+```
+
+## Interpretation and limitations
+
+Recurrence across recording windows provides one way to prioritize
+candidate frequency families for further review.
+
+These percentages describe families, not buildings. Buildings contributing
+more families have more influence on the summary, and windows from the
+same recording are not independent building observations.
+
+Recurrence alone does not confirm a structural mode. Directional evidence,
+mode shapes, and other diagnostics remain separate review tasks.
+
+The computational contribution here is a reproducible exchange:
+R produces a summary, Python calculates from that summary, and R uses
+the returned Python results in the same document.
+
+## Acknowledgements
+
+My broader doctoral research involves collaboration with
+Dr. Carlos E. Ventura, Dr. Alemdar Bayraktar, and
+Dr. Mehrtash Motamedi. This demonstration post presents a preliminary
+sample of that research workflow.

@@ -148,3 +148,26 @@ The restoration and rendering commands were successfully tested in a
 separate local Git clone on Windows 11. Python used the clone's own
 `.venv`, renv reported a consistent project, and all seven website
 pages rendered successfully.
+
+
+## Mixed R and Python bonus post
+
+The source is `posts/r-and-python/index.qmd`. It uses the knitr engine
+and reticulate to pass an R summary to Python and return Python-calculated
+percentages to R.
+
+The post selects the Python interpreter in the current project's `.venv`
+using `QUARTO_PROJECT_DIR` and `RETICULATE_PYTHON`. No personal absolute
+path is required.
+
+From the repository root, restore both environments before rendering:
+
+```bash
+uv sync --locked
+Rscript -e 'renv::restore(prompt = FALSE)'
+uv run quarto render
+```
+
+The input CSV is already included at
+`posts/ambient-vibration-repeatability/field-av-frequency-families.csv`.
+No additional research-data download is needed.
