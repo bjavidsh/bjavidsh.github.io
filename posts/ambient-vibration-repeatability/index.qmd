@@ -1,0 +1,215 @@
+---
+title: "Do candidate vibration frequencies recur across recording windows?"
+author: "Behtash JavidSharifi"
+date: "2026-09-23"
+categories: [Earthquake Engineering, RECoVER, Python]
+jupyter: python3
+format:
+  html:
+    code-fold: false
+execute:
+  echo: true
+  cache: false
+  freeze: false
+---
+
+## Why examine recurrence?
+
+My PhD research uses ambient-vibration evidence to help characterize
+buildings affected by earthquakes. One useful review question is whether
+similar candidate frequencies appear in different portions of a recording.
+
+Here, I examine frequency families assembled from early, middle, and late
+recording windows. A family groups nearby candidate frequencies within
+one building case. Recurrence can help prioritize further review, but it
+does not by itself confirm a structural mode.
+
+## Data source and scope
+
+The data come from the `FAMILIES` sheet of my
+`RECoVER_FieldAV_AdjudicationWorkbook_AR38D.xlsx` research workbook.
+
+The [frequency-family CSV](field-av-frequency-families.csv) contains
+the selected fields used in this analysis, including building identifiers,
+frequency summaries, window counts, and review flags.
+
+Each row represents one candidate frequency family, not one building.
+These are processed research records, rather than raw sensor measurements.
+The source workbook marks every family as not automatically accepted.
+
+## Load the packages
+
+I use pandas for reading and summarizing the records and matplotlib
+for the figure.
+
+```{python}
+#| label: setup
+
+import pandas as pd
+import matplotlib.pyplot as plt
+from IPython.display import display
+```
+
+## Read and check the records
+
+I check the fields required for this analysis, verify that family
+identifiers are unique within each case, and confirm that window counts
+fall within the three recording windows.
+
+```{python}
+#| label: inspect-frequency-families
+
+families = pd.read_csv("field-av-frequency-families.csv")
+
+required = [
+    "CaseID",
+    "FamilyID",
+    "FrequencyMedian_Hz",
+    "WindowsRepresented",
+    "RelativeFrequencySpread_pct",
+]
+
+assert families[required].notna().all().all()
+assert not families.duplicated(["CaseID", "FamilyID"]).any()
+assert families["WindowsRepresented"].isin([1, 2, 3]).all()
+assert families["FrequencyMedian_Hz"].gt(0).all()
+assert families["RelativeFrequencySpread_pct"].ge(0).all()
+
+overview = pd.DataFrame({
+    "Frequency families": [len(families)],
+    "Building cases": [families["CaseID"].nunique()],
+    "Missing required values": [
+        families[required].isna().sum().sum()
+    ],
+})
+
+display(overview)
+```
+
+This snapshot contains 87 candidate frequency families across 13
+building cases. Multiple families can belong to the same building.
+
+The externally analysed case TK3144-12 is absent from this automatic
+family table. Its absence does not mean that the building has no
+vibration modes.
+
+## Count recurrence across windows
+
+I count how many families appear in one, two, or all three windows.
+The percentage denominator is the total number of families.
+
+```{python}
+#| label: summarize-window-recurrence
+
+recurrence = (
+    families["WindowsRepresented"]
+    .value_counts()
+    .reindex([1, 2, 3], fill_value=0)
+    .rename_axis("Windows represented")
+    .reset_index(name="Frequency families")
+)
+
+recurrence["Percentage of families"] = (
+    100 * recurrence["Frequency families"] / len(families)
+).round(1)
+
+display(recurrence)
+```
+
+There are 42 families represented in one window, 26 in two windows,
+and 19 in all three. Therefore, 45 of the 87 families appear in at
+least two windows.
+
+These are family-level counts. Buildings contributing more families
+have more influence on this summary.
+
+## Visualize recurrence
+
+The figure shows the number of families in each recurrence category.
+Integer labels above the bars make the counts explicit.
+
+```{python}
+#| label: fig-window-recurrence
+#| fig-cap: "Candidate frequency families represented in one, two, or three recording windows. Counts refer to families, not buildings."
+
+fig, ax = plt.subplots(figsize=(7, 4))
+
+bars = ax.bar(
+    recurrence["Windows represented"],
+    recurrence["Frequency families"],
+    color="#2563EB",
+)
+
+ax.bar_label(bars, padding=3)
+ax.set(
+    xticks=[1, 2, 3],
+    xlabel="Number of recording windows represented",
+    ylabel="Number of candidate frequency families",
+    ylim=(0, 50),
+)
+ax.spines[["top", "right"]].set_visible(False)
+
+fig.tight_layout()
+plt.show()
+```
+
+## Examine frequency spread among recurring families
+
+Recurrence and frequency spread describe different aspects of the
+evidence. A family can recur across windows while its candidate
+frequencies vary.
+
+For this comparison, I retain families represented in at least two
+windows. A family containing only one candidate necessarily has zero
+observed spread, which would not demonstrate repeatability.
+
+I summarize the workbook's recorded relative frequency spread.
+The values are percentages, not confidence intervals.
+
+```{python}
+#| label: summarize-frequency-spread
+
+repeated = families.loc[
+    families["WindowsRepresented"] >= 2
+]
+
+spread_summary = (
+    repeated.groupby("WindowsRepresented")[
+        "RelativeFrequencySpread_pct"
+    ]
+    .agg(["count", "median", "min", "max"])
+    .rename(columns={
+        "count": "Families",
+        "median": "Median spread (%)",
+        "min": "Minimum spread (%)",
+        "max": "Maximum spread (%)",
+    })
+    .rename_axis("Windows represented")
+    .reset_index()
+    .round(2)
+)
+
+display(spread_summary)
+```
+
+The median recorded spread is approximately 1.77% for families
+represented in two windows and 3.39% for families represented in
+three windows.
+
+This comparison involves different sets of families. It does not
+show that adding a window causes a larger spread. The grouping rule
+and number of candidate observations also affect the summaries.
+
+## What does this mean for my research?
+
+In this snapshot, just over half of the candidate frequency families
+appear in more than one recording window. These recurring families
+provide a useful starting point for closer review.
+
+However, the windows come from the same building recordings and
+are not independent building observations. Recurrence alone cannot
+identify a frequency as a translational or torsional structural mode.
+
+For my RECoVER workflow, this analysis documents the available
+candidate evidence before reviewing directions, mode shapes, and
+other diagnostics. Final modal selections remain a separate task.
