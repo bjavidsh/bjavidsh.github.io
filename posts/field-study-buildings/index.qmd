@@ -1,0 +1,164 @@
+---
+title: "School buildings in my earthquake field research"
+author: "Behtash JavidSharifi"
+date: "2026-09-23"
+categories: [Earthquake Engineering, RECoVER, R]
+format:
+  html:
+    code-fold: false
+execute:
+  echo: true
+  cache: false
+  freeze: false
+---
+
+## Why describe the building sample?
+
+My PhD research examines relationships between earthquake ground motion,
+structural response, and observed building damage.
+As part of this work, RECoVER brings together field evidence and numerical
+analysis.
+
+This post describes the building sample recorded in one snapshot of my
+field ambient-vibration review workbook.
+Before examining vibration characteristics, I want to understand which
+buildings and damage categories the dataset represents.
+
+## Data source and scope
+
+The data come from the `CASE_REVIEW` sheet of my
+`RECoVER_FieldAV_AdjudicationWorkbook_AR38D.xlsx` research workbook.
+
+The [building-data CSV](field-av-buildings.csv) contains the selected
+columns used here.
+It retains the workbook's building identifiers, reported storey counts,
+damage labels, and evidence routes.
+
+This is a descriptive analysis of a research sample.
+It does not establish that building height caused a particular damage level.
+The workbook's modal selections remain a separate review task.
+
+## Load the packages
+
+I suppress package startup messages to keep the page readable.
+The analysis code and its results remain visible.
+
+```{r}
+#| label: setup
+#| message: false
+
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(knitr)
+```
+
+## Read and inspect the building records
+
+Each row represents one building case.
+A station can be associated with more than one building, so I use
+`CaseID` to identify individual records.
+
+```{r}
+#| label: inspect-buildings
+
+buildings <- read_csv(
+  "field-av-buildings.csv",
+  show_col_types = FALSE
+)
+
+buildings |>
+  select(CaseID, StoreysReported, FieldDamageLabel) |>
+  kable(
+    col.names = c("Building case", "Reported storeys", "Recorded damage")
+  )
+```
+
+## Check completeness and identifiers
+
+Before calculating summaries, I check for missing values and repeated
+building identifiers.
+
+```{r}
+#| label: check-building-data
+
+data_checks <- buildings |>
+  summarise(
+    building_records = n(),
+    unique_buildings = n_distinct(CaseID),
+    missing_storeys = sum(is.na(StoreysReported)),
+    missing_damage_labels = sum(is.na(FieldDamageLabel))
+  )
+
+kable(data_checks)
+```
+
+## Summarize the recorded damage categories
+
+The table shows how many buildings fall in each recorded damage category,
+together with their mean and range of reported storey counts.
+
+```{r}
+#| label: summarize-buildings
+
+damage_summary <- buildings |>
+  group_by(FieldDamageLabel) |>
+  summarise(
+    buildings = n(),
+    mean_storeys = mean(StoreysReported),
+    minimum_storeys = min(StoreysReported),
+    maximum_storeys = max(StoreysReported),
+    .groups = "drop"
+  )
+
+kable(
+  damage_summary,
+  digits = 2,
+  col.names = c(
+    "Recorded damage", "Buildings", "Mean storeys",
+    "Minimum storeys", "Maximum storeys"
+  )
+)
+```
+
+## Compare the building sample visually
+
+Point size represents the number of buildings sharing the same damage
+label and reported storey count.
+
+Fractional storey counts are preserved as reported in the workbook.
+They have not been rounded or reinterpreted.
+
+```{r}
+#| label: fig-building-storeys
+#| fig-cap: "Reported storey counts by recorded damage category. Larger points indicate more buildings at the same position."
+#| fig-width: 8
+#| fig-height: 4.5
+
+ggplot(
+  buildings,
+  aes(x = StoreysReported, y = FieldDamageLabel)
+) +
+  geom_count(colour = "#2563EB") +
+  scale_size_area(max_size = 9, breaks = c(1, 2)) +
+  labs(
+    x = "Reported number of storeys",
+    y = "Recorded damage category",
+    size = "Buildings"
+  ) +
+  theme_minimal(base_size = 12)
+```
+
+## What does this snapshot show?
+
+The sample includes buildings with several recorded damage levels.
+Moderate and low damage are the most common labels in this snapshot,
+while severe damage is represented by only one building.
+
+The categories also overlap in reported storey count.
+These descriptive results do not isolate the effects of structural
+design, construction quality, or earthquake exposure.
+
+For my research, this overview helps document the sample before moving
+to the separate tasks of reviewing vibration evidence and comparing
+structural models.
