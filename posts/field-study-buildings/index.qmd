@@ -38,6 +38,12 @@ This is a descriptive analysis of a research sample.
 It does not establish that building height caused a particular damage level.
 The workbook's modal selections remain a separate review task.
 
+This preliminary research sample is shared to demonstrate a reproducible
+analysis workflow for DSCI 521 Milestone 3 and my research portfolio.
+It represents a selected workbook snapshot, rather than the complete
+or final research dataset. The results describe this sample and should
+not be interpreted as final thesis findings.
+
 ## Load the packages
 
 I suppress package startup messages to keep the page readable.
@@ -162,3 +168,10 @@ design, construction quality, or earthquake exposure.
 For my research, this overview helps document the sample before moving
 to the separate tasks of reviewing vibration evidence and comparing
 structural models.
+
+## Acknowledgements
+
+My broader doctoral research involves collaboration with
+Dr. Carlos E. Ventura, Dr. Alemdar Bayraktar, and
+Dr. Mehrtash Motamedi. This demonstration post presents a preliminary
+sample of that research workflow.

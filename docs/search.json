@@ -32,7 +32,7 @@
     "href": "posts/field-study-buildings/index.html#data-source-and-scope",
     "title": "School buildings in my earthquake field research",
     "section": "Data source and scope",
-    "text": "Data source and scope\nThe data come from the CASE_REVIEW sheet of my RECoVER_FieldAV_AdjudicationWorkbook_AR38D.xlsx research workbook.\nThe building-data CSV contains the selected columns used here. It retains the workbook’s building identifiers, reported storey counts, damage labels, and evidence routes.\nThis is a descriptive analysis of a research sample. It does not establish that building height caused a particular damage level. The workbook’s modal selections remain a separate review task."
+    "text": "Data source and scope\nThe data come from the CASE_REVIEW sheet of my RECoVER_FieldAV_AdjudicationWorkbook_AR38D.xlsx research workbook.\nThe building-data CSV contains the selected columns used here. It retains the workbook’s building identifiers, reported storey counts, damage labels, and evidence routes.\nThis is a descriptive analysis of a research sample. It does not establish that building height caused a particular damage level. The workbook’s modal selections remain a separate review task.\nThis preliminary research sample is shared to demonstrate a reproducible analysis workflow for DSCI 521 Milestone 3 and my research portfolio. It represents a selected workbook snapshot, rather than the complete or final research dataset. The results describe this sample and should not be interpreted as final thesis findings."
   },
   {
     "objectID": "posts/field-study-buildings/index.html#load-the-packages",
@@ -75,6 +75,13 @@
     "title": "School buildings in my earthquake field research",
     "section": "What does this snapshot show?",
     "text": "What does this snapshot show?\nThe sample includes buildings with several recorded damage levels. Moderate and low damage are the most common labels in this snapshot, while severe damage is represented by only one building.\nThe categories also overlap in reported storey count. These descriptive results do not isolate the effects of structural design, construction quality, or earthquake exposure.\nFor my research, this overview helps document the sample before moving to the separate tasks of reviewing vibration evidence and comparing structural models."
+  },
+  {
+    "objectID": "posts/field-study-buildings/index.html#acknowledgements",
+    "href": "posts/field-study-buildings/index.html#acknowledgements",
+    "title": "School buildings in my earthquake field research",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nMy broader doctoral research involves collaboration with Dr. Carlos E. Ventura, Dr. Alemdar Bayraktar, and Dr. Mehrtash Motamedi. This demonstration post presents a preliminary sample of that research workflow."
   },
   {
     "objectID": "index.html",
@@ -137,7 +144,7 @@
     "href": "posts/ambient-vibration-repeatability/index.html#data-source-and-scope",
     "title": "Do candidate vibration frequencies recur across recording windows?",
     "section": "Data source and scope",
-    "text": "Data source and scope\nThe data come from the FAMILIES sheet of my RECoVER_FieldAV_AdjudicationWorkbook_AR38D.xlsx research workbook.\nThe frequency-family CSV contains the selected fields used in this analysis, including building identifiers, frequency summaries, window counts, and review flags.\nEach row represents one candidate frequency family, not one building. These are processed research records, rather than raw sensor measurements. The source workbook marks every family as not automatically accepted."
+    "text": "Data source and scope\nThe data come from the FAMILIES sheet of my RECoVER_FieldAV_AdjudicationWorkbook_AR38D.xlsx research workbook.\nThe frequency-family CSV contains the selected fields used in this analysis, including building identifiers, frequency summaries, window counts, and review flags.\nEach row represents one candidate frequency family, not one building. These are processed research records, rather than raw sensor measurements. The source workbook marks every family as not automatically accepted.\nThis preliminary research sample is shared to demonstrate a reproducible analysis workflow for DSCI 521 Milestone 3 and my research portfolio. It represents a selected workbook snapshot, rather than the complete or final research dataset. The results describe this sample and should not be interpreted as final thesis findings."
   },
   {
     "objectID": "posts/ambient-vibration-repeatability/index.html#load-the-packages",
@@ -180,6 +187,13 @@
     "title": "Do candidate vibration frequencies recur across recording windows?",
     "section": "What does this mean for my research?",
     "text": "What does this mean for my research?\nIn this snapshot, just over half of the candidate frequency families appear in more than one recording window. These recurring families provide a useful starting point for closer review.\nHowever, the windows come from the same building recordings and are not independent building observations. Recurrence alone cannot identify a frequency as a translational or torsional structural mode.\nFor my RECoVER workflow, this analysis documents the available candidate evidence before reviewing directions, mode shapes, and other diagnostics. Final modal selections remain a separate task."
+  },
+  {
+    "objectID": "posts/ambient-vibration-repeatability/index.html#acknowledgements",
+    "href": "posts/ambient-vibration-repeatability/index.html#acknowledgements",
+    "title": "Do candidate vibration frequencies recur across recording windows?",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nMy broader doctoral research involves collaboration with Dr. Carlos E. Ventura, Dr. Alemdar Bayraktar, and Dr. Mehrtash Motamedi. This demonstration post presents a preliminary sample of that research workflow."
   },
   {
     "objectID": "posts/first-weeks/index.html",

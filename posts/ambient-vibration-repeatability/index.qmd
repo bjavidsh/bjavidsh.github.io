@@ -37,6 +37,12 @@ Each row represents one candidate frequency family, not one building.
 These are processed research records, rather than raw sensor measurements.
 The source workbook marks every family as not automatically accepted.
 
+This preliminary research sample is shared to demonstrate a reproducible
+analysis workflow for DSCI 521 Milestone 3 and my research portfolio.
+It represents a selected workbook snapshot, rather than the complete
+or final research dataset. The results describe this sample and should
+not be interpreted as final thesis findings.
+
 ## Load the packages
 
 I use pandas for reading and summarizing the records and matplotlib
@@ -213,3 +219,10 @@ identify a frequency as a translational or torsional structural mode.
 For my RECoVER workflow, this analysis documents the available
 candidate evidence before reviewing directions, mode shapes, and
 other diagnostics. Final modal selections remain a separate task.
+
+## Acknowledgements
+
+My broader doctoral research involves collaboration with
+Dr. Carlos E. Ventura, Dr. Alemdar Bayraktar, and
+Dr. Mehrtash Motamedi. This demonstration post presents a preliminary
+sample of that research workflow.
